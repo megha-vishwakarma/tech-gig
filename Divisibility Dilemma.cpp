@@ -1,5 +1,4 @@
-Problem Statement:
-
+/*
 The Divisibility Dilemma (100 Marks)
 In the picturesque village of Numeropolis, the annual "Divisibility Day" is celebrated with great enthusiasm. This day is marked by various mathematical challenges and games that put the villagers' arithmetic skills to the test. This year, the villagers are embarking on a quest to explore the distinctive properties of subarrays within integer arrays.
 
@@ -42,7 +41,60 @@ There are a total of 8 subarrays following the condition:
 
 { 4, 5 }
 
-{ 5 } 
+{ 5 }  */
+
+
+#include<iostream>
+#include<vector>
+#include<unordered_set>
+using namespace std;
+
+int myvector(vector<int> &nums, int k, int p) {
+    unordered_set<string> s;
+
+    int left = 0;
+    int pl = 0;
+
+    for (int right = 0; right < nums.size(); right++) {
+        if (nums[right] % p == 0) {
+            pl++;
+        }
+        while (pl > k) {
+            if (nums[left] % p == 0)
+                pl--;
+            left++;
+        }
+
+        for (int i = left; i <= right; i++) {
+            string a = "";
+            for (int j = i; j <= right; j++) {
+                a = a + to_string(nums[j]);
+                if (j < right) {
+                    a += ",";
+                }
+            }
+            s.insert(a);
+        }
+    }
+
+    return s.size();
+}
+
+int main() {
+    int n, k, p;
+    cin >> n >> k >> p;
+    vector<int> nums(n);
+
+    for (int i = 0; i < n; i++) {
+        cin >> nums[i];
+    }
+
+    int count = myvector(nums, k, p);
+    cout << count << endl;
+
+    return 0;
+}
+
 
 { 5, 6 }
 
