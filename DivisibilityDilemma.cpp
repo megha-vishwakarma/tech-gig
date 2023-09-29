@@ -41,7 +41,13 @@ There are a total of 8 subarrays following the condition:
 
 { 4, 5 }
 
-{ 5 }  */
+{ 5 }  
+
+{ 5, 6 }
+
+{ 6 }
+
+*/
 
 
 #include<iostream>
@@ -96,6 +102,3 @@ int main() {
 }
 
 
-{ 5, 6 }
-
-{ 6 }
